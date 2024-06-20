@@ -37,6 +37,29 @@ public class VehicleController {
     return vehicleService.getAllVehicles();
   }
 
+  /**
+   * Retrieves vehicles within a specified radius based on latitude and longitude coordinates.
+   *
+   * @param latitude   The latitude coordinate for the center point of the search area.
+   * @param longitude  The longitude coordinate for the center point of the search area.
+   * @param radiusInKm The radius in kilometers to search for vehicles from the center point.
+   * @return A ResponseEntity containing a VehiclesResponse with vehicles found within the specified
+   * radius.
+   */
+  @GetMapping("/vehicles")
+  public ResponseEntity<VehiclesResponse> getVehiclesInRadius(
+      @RequestParam("latitude") double latitude,
+      @RequestParam("longitude") double longitude,
+      @RequestParam("radius") double radiusInKm) {
+    // Implement logic to query vehicles within the specified radius
+    List<Vehicle> vehiclesInRadius = vehicleService.findVehiclesInRadius(latitude, longitude,
+        radiusInKm);
+
+    VehiclesResponse response = new VehiclesResponse();
+    response.setVehicles(vehiclesInRadius);
+
+    return ResponseEntity.ok().body(response);
+  }
 
   /**
    * Updates the details of a specific vehicle.

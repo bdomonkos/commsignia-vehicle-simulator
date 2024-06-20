@@ -36,13 +36,24 @@ public class VehicleService {
    *
    * @param id The ID of the vehicle.
    * @return The vehicle with the specified ID.
-   * @throws EntityNotFoundException if no vehicle found with the given ID.
+   * @throws javax.persistence.EntityNotFoundException if no vehicle found with the given ID.
    */
   public Vehicle getVehicleById(Long id) {
     return vehicleRepository.findById(id)
         .orElseThrow(() -> new EntityNotFoundException("Vehicle not found with id " + id));
   }
 
+  /**
+   * Finds vehicles within a specified radius from a given latitude and longitude.
+   *
+   * @param latitude   The latitude coordinate.
+   * @param longitude  The longitude coordinate.
+   * @param radiusInKm The radius in kilometers.
+   * @return The list of vehicles within the specified radius.
+   */
+  public List<Vehicle> findVehiclesInRadius(double latitude, double longitude, double radiusInKm) {
+    return vehicleRepository.findVehiclesInCircle(latitude, longitude, radiusInKm);
+  }
 
   /**
    * Creates a new vehicle.
@@ -65,8 +76,10 @@ public class VehicleService {
   public Vehicle updateVehicle(Long id, Vehicle vehicle) {
     Vehicle v = vehicleRepository.findById(id)
         .orElseThrow(() -> new EntityNotFoundException("Vehicle not found with id " + id));
+    ;
     v.setLatitude(vehicle.getLatitude());
     v.setLongitude(vehicle.getLongitude());
-    return vehicleRepository.save(v);
+    vehicleRepository.save(v);
+    return v;
   }
 }
