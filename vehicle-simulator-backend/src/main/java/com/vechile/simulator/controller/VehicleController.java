@@ -26,6 +26,8 @@ public class VehicleController {
 
   @Autowired
   private VehicleService vehicleService;
+  @Autowired
+  private SimpMessagingTemplate messagingTemplate;
 
   /**
    * Retrieves all vehicles available in the system.
@@ -63,14 +65,15 @@ public class VehicleController {
 
   /**
    * Updates the details of a specific vehicle.
-   *
    * @param id      The ID of the vehicle to update.
    * @param vehicle The updated details of the vehicle.
    * @return The updated Vehicle object after the update operation.
    */
   @PostMapping("/vehicle/{id}")
   public Vehicle updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle) {
-    return vehicleService.updateVehicle(id, vehicle);
+    Vehicle updatedVehicle = vehicleService.updateVehicle(id, vehicle);
+    messagingTemplate.convertAndSend("/topic/vehicleLocation", updatedVehicle);
+    return updatedVehicle;
   }
 
   /**
