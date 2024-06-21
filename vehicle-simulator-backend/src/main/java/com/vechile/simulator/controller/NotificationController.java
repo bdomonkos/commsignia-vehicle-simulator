@@ -1,6 +1,6 @@
 package com.vechile.simulator.controller;
 
-import com.vechile.simulator.model.NotificationRequest;
+import com.vechile.simulator.dto.NotificationRequest;
 import com.vechile.simulator.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

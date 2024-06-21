@@ -4,8 +4,8 @@ import com.vechile.simulator.model.Notification;
 import com.vechile.simulator.model.Vehicle;
 import com.vechile.simulator.repository.NotificationRepository;
 import com.vechile.simulator.repository.VehicleRepository;
-import javax.persistence.EntityNotFoundException;
-import javax.transaction.Transactional;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

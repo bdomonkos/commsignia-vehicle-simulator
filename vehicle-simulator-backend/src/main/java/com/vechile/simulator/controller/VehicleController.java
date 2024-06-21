@@ -1,7 +1,7 @@
 package com.vechile.simulator.controller;
 
 import com.vechile.simulator.model.Vehicle;
-import com.vechile.simulator.model.VehiclesResponse;
+import com.vechile.simulator.dto.VehiclesResponse;
 import com.vechile.simulator.service.VehicleService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

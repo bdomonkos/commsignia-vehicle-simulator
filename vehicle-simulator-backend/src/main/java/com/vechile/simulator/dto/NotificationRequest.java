@@ -1,4 +1,4 @@
-package com.vechile.simulator.model;
+package com.vechile.simulator.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

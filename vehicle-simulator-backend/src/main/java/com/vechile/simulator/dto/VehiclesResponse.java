@@ -1,5 +1,6 @@
-package com.vechile.simulator.model;
+package com.vechile.simulator.dto;
 
+import com.vechile.simulator.model.Vehicle;
 import java.util.List;
 import lombok.Data;
 
