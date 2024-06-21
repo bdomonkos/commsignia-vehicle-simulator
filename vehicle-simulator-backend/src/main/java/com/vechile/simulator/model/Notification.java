@@ -37,12 +37,12 @@ public class Notification {
   @JoinColumn(name = "vehicle_id")
   @JsonIgnore
   @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-  private Vehicle vehicle;
+  private final Vehicle vehicle;
 
   /**
    * The message content of the notification.
    */
-  private String message;
+  private final String message;
 
   /**
    * Constructs a notification with the given message and associated vehicle.

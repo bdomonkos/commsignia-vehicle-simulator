@@ -1,5 +1,6 @@
 package com.vechile.simulator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
@@ -8,7 +9,8 @@ import lombok.Data;
 @Data
 public class NotificationRequest {
 
-  private long vehicle_id;
+  @JsonProperty("vehicle_id")
+  private long vehicleId;
   private String message;
 
 }
