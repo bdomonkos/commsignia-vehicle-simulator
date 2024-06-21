@@ -64,10 +64,11 @@ public class VehicleController {
   }
 
   /**
-   * Updates the details of a specific vehicle.
+   * Update a vehicle with the given ID.
+   *
    * @param id      The ID of the vehicle to update.
-   * @param vehicle The updated details of the vehicle.
-   * @return The updated Vehicle object after the update operation.
+   * @param vehicle The updated vehicle details received in the request body.
+   * @return The updated Vehicle object.
    */
   @PostMapping("/vehicle/{id}")
   public Vehicle updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle) {

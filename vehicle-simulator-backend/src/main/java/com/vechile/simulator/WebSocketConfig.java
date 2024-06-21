@@ -7,7 +7,8 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
 /**
- * WebSocket configuration class that enables WebSocket message handling, backed by a message broker.
+ * WebSocket configuration class that enables WebSocket message handling, backed by a message
+ * broker.
  */
 @Configuration
 @EnableWebSocketMessageBroker
@@ -20,9 +21,9 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
    */
   @Override
   public void configureMessageBroker(MessageBrokerRegistry config) {
-    // Enable a simple memory-based message broker to carry the messages back to the client on destinations prefixed with "/topic".
+
     config.enableSimpleBroker("/topic");
-    // Designate "/app" as the prefix for messages that are bound for methods annotated with @MessageMapping.
+
     config.setApplicationDestinationPrefixes("/app");
   }
 

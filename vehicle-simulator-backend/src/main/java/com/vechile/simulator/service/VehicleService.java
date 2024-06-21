@@ -5,10 +5,8 @@ import com.vechile.simulator.repository.VehicleRepository;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityNotFoundException;
-import org.locationtech.jts.geom.GeometryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.ResourceAccessException;
 
 
 /**
@@ -20,7 +18,6 @@ public class VehicleService {
   @Autowired
   private VehicleRepository vehicleRepository;
 
-  private final GeometryFactory geometryFactory = new GeometryFactory();
 
   /**
    * Retrieves all vehicles.
@@ -74,12 +71,11 @@ public class VehicleService {
    * @return The updated vehicle.
    */
   public Vehicle updateVehicle(Long id, Vehicle vehicle) {
-    Vehicle v = vehicleRepository.findById(id)
+    Vehicle originalVehicle = vehicleRepository.findById(id)
         .orElseThrow(() -> new EntityNotFoundException("Vehicle not found with id " + id));
-    ;
-    v.setLatitude(vehicle.getLatitude());
-    v.setLongitude(vehicle.getLongitude());
-    vehicleRepository.save(v);
-    return v;
+    originalVehicle.setLatitude(vehicle.getLatitude());
+    originalVehicle.setLongitude(vehicle.getLongitude());
+    vehicleRepository.save(originalVehicle);
+    return originalVehicle;
   }
 }

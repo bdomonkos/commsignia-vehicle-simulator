@@ -4,7 +4,7 @@ import com.vechile.simulator.model.Notification;
 import com.vechile.simulator.model.Vehicle;
 import com.vechile.simulator.repository.NotificationRepository;
 import com.vechile.simulator.repository.VehicleRepository;
-import java.util.List;
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +32,7 @@ public class NotificationService {
   public void addNotificationToVehicle(Long vehicleId, String message) {
     // Retrieve the vehicle by ID
     Vehicle vehicle = vehicleRepository.findById(vehicleId)
-        .orElseThrow(() -> new IllegalArgumentException("Vehicle not found with id: " + vehicleId));
+        .orElseThrow(() -> new EntityNotFoundException("Vehicle not found with id: " + vehicleId));
 
     // Create a new notification
     Notification notification = new Notification(message, vehicle);

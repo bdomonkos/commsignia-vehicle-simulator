@@ -47,7 +47,7 @@ public class Vehicle {
   @OneToMany(mappedBy = "vehicle", targetEntity = Notification.class, cascade = CascadeType.ALL,
       fetch = FetchType.EAGER)
   @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-  private List<Notification> notifications = new ArrayList<>();
+  private final List<Notification> notifications = new ArrayList<>();
 
 
 }
