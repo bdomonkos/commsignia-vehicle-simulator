@@ -32,7 +32,7 @@ public class NotificationController {
   @PostMapping("/notifications")
   public ResponseEntity<String> addNotificationToVehicle(
       @RequestBody NotificationRequest notificationRequest) {
-    notificationService.addNotificationToVehicle(notificationRequest.getVehicle_id(),
+    notificationService.addNotificationToVehicle(notificationRequest.getVehicleId(),
         notificationRequest.getMessage());
     return ResponseEntity.ok("Notification added successfully");
   }

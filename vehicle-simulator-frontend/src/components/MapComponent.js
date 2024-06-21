@@ -1,8 +1,10 @@
 // src/MapComponent.js
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
 import webSocketService from "../services/webSocketService";
 import ListViewComponent from "./ListView";
+import carIconUrl from "../images/car.png";
 
 function MapComponent() {
   const [coordinates, setCoordinates] = useState({
@@ -25,9 +27,13 @@ function MapComponent() {
         return updatedVehicles;
       });
     };
-
-    // Fetch initial vehicles data from backend if needed
   }, []);
+
+  const carMarkerIcon = L.icon({
+    iconUrl: `${process.env.PUBLIC_URL}/car.png`,
+    iconSize: [30, 30],
+    iconAnchor: [15, 15],
+  });
 
   return (
     <div>
@@ -49,6 +55,7 @@ function MapComponent() {
           <Marker
             key={vehicle.id}
             position={[vehicle.latitude, vehicle.longitude]}
+            icon={carMarkerIcon}
           >
             <Popup>
               <p>Vehicle ID: {vehicle.id}</p>
