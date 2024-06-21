@@ -19,8 +19,8 @@ import lombok.NoArgsConstructor;
  */
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Notification {
 
   /**
@@ -37,12 +37,12 @@ public class Notification {
   @JoinColumn(name = "vehicle_id")
   @JsonIgnore
   @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-  private final Vehicle vehicle;
+  private Vehicle vehicle;
 
   /**
    * The message content of the notification.
    */
-  private final String message;
+  private String message;
 
   /**
    * Constructs a notification with the given message and associated vehicle.
